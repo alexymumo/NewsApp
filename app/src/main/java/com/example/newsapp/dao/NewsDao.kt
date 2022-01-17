@@ -7,7 +7,7 @@ import com.example.newsapp.models.Articles
 @Dao
 interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun saveArticle()
+    suspend fun saveArticle(articles: Articles)
 
     @Query("SELECT * FROM article_table")
     fun fetchArticles(): LiveData<List<Articles>>
