@@ -64,7 +64,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
-    //legancy support
+    //legacy support
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //navigation support
@@ -85,6 +85,7 @@ dependencies {
 
     //Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
 
     //Retrofit and GSON
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
