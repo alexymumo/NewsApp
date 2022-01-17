@@ -2,7 +2,6 @@ package com.example.newsapp.db.mappers
 
 import androidx.room.TypeConverters
 import com.example.newsapp.models.Sources
-import javax.xml.transform.Source
 
 class Converters {
     @TypeConverters
