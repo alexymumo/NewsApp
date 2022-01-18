@@ -1,12 +1,12 @@
-package com.example.newsapp.db
+package com.example.newsapp.data.local.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.newsapp.dao.NewsDao
-import com.example.newsapp.db.mappers.Converters
+import com.example.newsapp.data.local.dao.NewsDao
+import com.example.newsapp.data.local.converter.Converters
 
 @Database(entities = [NewsDao::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)

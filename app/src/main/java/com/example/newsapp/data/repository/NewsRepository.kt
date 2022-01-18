@@ -1,8 +1,7 @@
-package com.example.newsapp.repository
+package com.example.newsapp.data.repository
 
-import com.example.newsapp.dao.NewsDao
-import com.example.newsapp.db.NewsDatabase
-import com.example.newsapp.models.Articles
+import com.example.newsapp.data.local.db.NewsDatabase
+import com.example.newsapp.data.local.entities.Articles
 
 class NewsRepository(val newsDatabase: NewsDatabase) {
 

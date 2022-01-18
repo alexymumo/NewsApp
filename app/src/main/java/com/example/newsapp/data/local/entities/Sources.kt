@@ -1,4 +1,4 @@
-package com.example.newsapp.models
+package com.example.newsapp.data.local.entities
 
 data class Sources(
     var id: Any,

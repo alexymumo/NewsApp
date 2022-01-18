@@ -1,7 +1,7 @@
-package com.example.newsapp.db.mappers
+package com.example.newsapp.data.local.converter
 
 import androidx.room.TypeConverters
-import com.example.newsapp.models.Sources
+import com.example.newsapp.data.local.entities.Sources
 
 class Converters {
     @TypeConverters

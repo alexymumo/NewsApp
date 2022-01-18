@@ -1,9 +1,9 @@
-package com.example.newsapp.viewmodels
+package com.example.newsapp.ui.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.newsapp.repository.NewsRepository
+import com.example.newsapp.data.repository.NewsRepository
 import java.lang.IllegalArgumentException
 
 class NewsViewModelFactory(val application: Application,val newsRepository: NewsRepository) : ViewModelProvider.Factory {

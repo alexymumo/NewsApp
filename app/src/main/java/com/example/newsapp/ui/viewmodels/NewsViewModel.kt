@@ -1,14 +1,11 @@
-package com.example.newsapp.viewmodels
+package com.example.newsapp.ui.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.newsapp.models.Articles
-import com.example.newsapp.repository.NewsRepository
+import com.example.newsapp.data.local.entities.Articles
+import com.example.newsapp.data.repository.NewsRepository
 import kotlinx.coroutines.launch
-import java.lang.IllegalArgumentException
 
 class NewsViewModel(application: Application, private val newsRepository: NewsRepository) : AndroidViewModel(application) {
 
