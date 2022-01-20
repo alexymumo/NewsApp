@@ -1,15 +1,15 @@
 package com.example.newsapp.data.local.converter
 
-import androidx.room.TypeConverters
+import androidx.room.TypeConverter
 import com.example.newsapp.data.local.entities.Sources
 
 class Converters {
-    @TypeConverters
-    fun fromSource(sources: Sources): String {
+    @TypeConverter
+    fun fromSource(sources: Sources):String{
         return sources.name
     }
-    @TypeConverters
-    fun toSource(name: String): Sources {
+    @TypeConverter
+    fun toSource(name: String):Sources {
         return Sources(name, name)
     }
 }

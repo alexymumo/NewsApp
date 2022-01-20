@@ -4,10 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-@Entity(tableName = "article_table")
+@Entity(
+    tableName = "article_table"
+)
 data class Articles(
-    @PrimaryKey(autoGenerate = true)
-    var id : Int?,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val author: String?,
     val content: String?,
     val description: String?,
@@ -15,4 +16,4 @@ data class Articles(
     val title: String?,
     val url: String?,
     val urlImage: String?
-) : Serializable
+): Serializable

@@ -5,9 +5,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.newsapp.data.local.dao.NewsDao
 import com.example.newsapp.data.local.converter.Converters
+import com.example.newsapp.data.local.entities.Articles
 
-@Database(entities = [NewsDao::class], version = 1, exportSchema = false)
+@Database(entities = [Articles::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
-abstract class NewsDatabase : RoomDatabase() {
+abstract class NewsDatabase : RoomDatabase() {  
     abstract fun newsDao(): NewsDao
 }
