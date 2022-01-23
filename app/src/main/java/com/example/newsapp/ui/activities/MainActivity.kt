@@ -2,6 +2,7 @@ package com.example.newsapp.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -21,12 +22,14 @@ class MainActivity : AppCompatActivity() {
             ) ,
         )
 
+        //hr@imperiomedical.co.ke
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navController.addOnDestinationChangedListener { _, destination, _->
             destination.id == R.id.sportsFragment ||
             destination.id == R.id.trendingFragment ||
             destination.id == R.id.articleFragment
         }
-        )
+
     }
 }

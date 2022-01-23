@@ -4,17 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:id="@+id/drawerLayout"
+    tools:openDrawer="start"
     tools:context=".ui.activities.MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
+    <com.google.android.material.navigation.NavigationView
         android:id="@+id/host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="409dp"
         android:layout_height="354dp"
         app:defaultNavHost="true"
+        android:fitsSystemWindows="true"
         app:navGraph="@navigation/nav_graph"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        tools:layout_editor_absoluteY="1dp"
+        app:menu="@menu/nav_drawer_menu"
+        />
 
 </androidx.drawerlayout.widget.DrawerLayout>
