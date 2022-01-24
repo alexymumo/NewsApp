@@ -9,8 +9,8 @@ import com.example.newsapp.ui.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
-    var viewPagerAdapter: ViewPagerAdapter? = null
-    var viewPager: ViewPager? = null
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
+    private lateinit var viewPager: ViewPager
 
     var Title = arrayOf<CharSequence>(
         "Articles",
@@ -18,13 +18,13 @@ class MainActivity : AppCompatActivity() {
         "Tech",
         "Trending Topics"
     )
-    var tabs = 4
+    private var tabs = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val fragmentManager: FragmentManager? = this.supportFragmentManager
+        val fragmentManager: FragmentManager = this.supportFragmentManager
         viewPagerAdapter = ViewPagerAdapter(fragmentManager, Title, tabs)
 
         viewPager = findViewById(R.id.viewPager)
