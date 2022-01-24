@@ -28,6 +28,10 @@ class ViewPagerAdapter(
 
     }
 
+    override fun getPageTitle(position: Int): CharSequence {
+        return Head_Titles[position]
+    }
+
     override fun getCount(): Int {
         return totalTabs
     }
