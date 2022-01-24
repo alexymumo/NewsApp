@@ -25,4 +25,9 @@
         android:name="com.example.newsapp.ui.fragments.ArticleFragment"
         android:label="fragment_article"
         tools:layout="@layout/fragment_article" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.newsapp.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" />
 </navigation>
