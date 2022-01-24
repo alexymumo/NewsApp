@@ -1,14 +1,15 @@
 package com.example.newsapp.ui.adapters
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.newsapp.ui.fragments.ArticleFragment
 import com.example.newsapp.ui.fragments.SportsFragment
 import com.example.newsapp.ui.fragments.TrendingFragment
 
+@Suppress("DEPRECATION")
 class ViewPagerAdapter(
-    fm: androidx.fragment.app.FragmentManager,
+    fm: FragmentManager,
     private val Head_Titles: Array<CharSequence>,
     private var totalTabs: Int) : FragmentStatePagerAdapter(fm) {
 
