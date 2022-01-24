@@ -52,7 +52,7 @@ fun provideOkHttp(): OkHttpClient {
 }
 
 val repositoryModule : Module = module {
-    single { NewsRepository(get()) }
+    single { NewsRepository(get(), get()) }
 }
 
 val daoModule : Module = module {
