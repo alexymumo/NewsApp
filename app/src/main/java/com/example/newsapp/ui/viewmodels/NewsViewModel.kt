@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.load.engine.Resource
 import com.example.newsapp.data.local.entities.Articles
 import com.example.newsapp.data.repository.NewsRepository
 import kotlinx.coroutines.launch
