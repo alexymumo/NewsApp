@@ -89,8 +89,6 @@
                     />
             </LinearLayout>
 
-
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

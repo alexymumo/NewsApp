@@ -12,7 +12,7 @@ interface NewsApi {
     suspend fun getTechNews(
         @Query("key") apiKey: String = API_KEY,
         @Query("page") pageNumber: Int = 1,
-        @Query("country") countryCode: String,
+        @Query("country") countryCode: String = "us",
         @Query("category") categoryString: String = "tech"
     ) : Response<NewsResponse>
 
@@ -20,7 +20,7 @@ interface NewsApi {
     suspend fun getBreakingNews(
         @Query("key") apiKey: String = API_KEY,
         @Query("page") pageNumber: Int = 1,
-        @Query("country") countryCode: String,
+        @Query("country") countryCode: String = "us",
         @Query("category") categoryString: String = "breaking"
     ) : Response<NewsResponse>
 
@@ -28,7 +28,7 @@ interface NewsApi {
     suspend fun getSportsNews(
         @Query("key") apiKey: String = API_KEY,
         @Query("page") pageNumber: Int = 1,
-        @Query("country") countryCode: String,
+        @Query("country") countryCode: String = "us",
         @Query("category") categoryString: String = "sports"
     ) : Response<NewsResponse>
 
@@ -36,7 +36,7 @@ interface NewsApi {
     suspend fun getTrendingNews(
         @Query("key") apiKey: String = API_KEY,
         @Query("page") pageNumber: Int = 1,
-        @Query("country") countryCode: String,
+        @Query("country") countryCode: String = "us",
         @Query("category") categoryString: String = "trending"
     ) : Response<NewsResponse>
 }
