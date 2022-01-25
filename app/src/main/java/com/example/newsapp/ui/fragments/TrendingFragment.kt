@@ -17,6 +17,9 @@ class TrendingFragment : Fragment() {
     private lateinit var newsAdapter: NewsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         return inflater.inflate(R.layout.fragment_trending, container, false)
+
+
     }
 }
