@@ -6,7 +6,8 @@ import com.example.newsapp.data.network.NewsApi
 
 class NewsRepository(private val newsDatabase: NewsDatabase, private val newsApi: NewsApi) {
 
-    suspend fun getTechNews(countryCode: String, pageNumber: Int) = newsApi.getTechNews(countryCode, pageNumber)
+    suspend fun getTechNews(countryCode: String, pageNumber: Int) =
+        newsApi.getTechNews(countryCode, pageNumber)
 
     suspend fun getBreakingNews(countryCode: String, pageNumber: Int) =
         newsApi.getBreakingNews(countryCode, pageNumber)
@@ -17,10 +18,13 @@ class NewsRepository(private val newsDatabase: NewsDatabase, private val newsApi
     suspend fun getTrendingNews(countryCode: String, pageNumber: Int) =
         newsApi.getTrendingNews(countryCode, pageNumber)
 
-    suspend fun saveArticle(articles: Articles) = newsDatabase.newsDao().saveArticle(articles)
+    suspend fun saveArticle(articles: Articles) =
+        newsDatabase.newsDao().saveArticle(articles)
 
-    suspend fun deleteArticle(articles: Articles) = newsDatabase.newsDao().deleteArticles(articles)
+    suspend fun deleteArticle(articles: Articles) =
+        newsDatabase.newsDao().deleteArticles(articles)
 
-    fun getAllArticles() = newsDatabase.newsDao().fetchArticles()
+    fun getAllArticles() =
+        newsDatabase.newsDao().fetchArticles()
 
 }

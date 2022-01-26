@@ -9,6 +9,8 @@ import com.example.newsapp.data.local.entities.NewsResponse
 import com.example.newsapp.data.repository.NewsRepository
 import com.example.newsapp.utils.Resource
 import kotlinx.coroutines.launch
+import okhttp3.Response
+
 
 class NewsViewModel(application: Application, private val newsRepository: NewsRepository) : AndroidViewModel(application) {
 
@@ -27,25 +29,97 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
 
 
     init {
-        getBreakingNews()
-        getTechNews()
-        getTrendingNews()
-        getSportsNews()
+        getTechNews("us")
+        getTrendingNews("us")
+        getSportsNews("us")
     }
 
-    private fun getSportsNews() = viewModelScope.launch {
+    fun getSportsNews(countryCode: String) = viewModelScope.launch {
+        sportsNewsCall(countryCode)
+    }
+
+    fun getTrendingNews(countryCode: String) = viewModelScope.launch {
+        trendingNewsCall(countryCode)
+    }
+
+    fun getTechNews(countryCode: String) = viewModelScope.launch {
+        techNewsCall(countryCode)
+    }
+
+    private suspend fun sportsNewsCall(countryCode: String) {
+        sportsNews.postValue(Resource.Loading())
+        val response = newsRepository.getSportsNews(countryCode,sportsNewsPage)
+        sportsNews.postValue(sportsNewsResponse(response))
+    }
+
+    private suspend fun trendingNewsCall(countryCode: String) {
+        trendingNews.postValue(Resource.Loading())
+        val response = newsRepository.getTrendingNews(countryCode,trendingNewsPage)
+        trendingNews.postValue(trendingNewsResponse(response))
+    }
+
+    private suspend fun techNewsCall(countryCode: String) {
+        techNews.postValue(Resource.Loading())
+        val response = newsRepository.getTechNews(countryCode, techNewsPage)
+        techNews.postValue(techNewsResponse(response))
 
     }
 
-    private fun getTrendingNews() = viewModelScope.launch {
+    private fun techNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse>? {
+        if (response.isSuccessful){
+            response.body()?.let { newsResponse ->
+                techNewsPage++
+                if (techNewsResponse == null){
+                    techNewsResponse = newsResponse
+                }else{
+                    val oldArticles =techNewsResponse?.articles
+                    val newArticles = newsResponse.articles
+                    oldArticles?.addAll(newArticles)
+                }
+                return@let Resource.Success(techNewsResponse ?: newsResponse)
+            }
+        }
+        return Resource.Error(response.message(), null)
+    }
+
+
+    private fun trendingNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse>? {
+        if (response.isSuccessful){
+            response.body()?.let { resultResponse ->
+                trendingNewsPage++
+                if (techNewsResponse == null){
+                    techNewsResponse = techNewsResponse
+                }else {
+                    val oldArticles = trendingNewsResponse?.articles
+                    val newArticles = resultResponse.articles
+                    oldArticles?.addAll(newArticles)
+
+                }
+                return@let Resource.Success(trendingNewsResponse ?: resultResponse)
+
+            }
+        }
+        return Resource.Error(response.message(), null)
 
     }
 
-    private fun getTechNews() = viewModelScope.launch {
+    private fun sportsNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse>? {
+        if (response.isSuccessful){
+            response.body()?.let { resultResponse ->
+                sportsNewsPage++
+                if (sportsNewsResponse == null){
+                    sportsNewsResponse = sportsNewsResponse
+                }else {
+                    val oldArticles = sportsNewsResponse?.articles
+                    val newArticles = resultResponse.articles
+                    oldArticles?.addAll(newArticles)
 
-    }
+                }
+                return@let Resource.Success(sportsNewsResponse ?: resultResponse)
 
-    private fun getBreakingNews() = viewModelScope.launch {
+            }
+        }
+        return Resource.Error(response.message(), null)
 
     }
 
