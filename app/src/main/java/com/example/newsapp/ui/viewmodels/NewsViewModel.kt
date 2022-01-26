@@ -46,25 +46,6 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
         techNewsCall(countryCode)
     }
 
-    private suspend fun sportsNewsCall(countryCode: String) {
-        sportsNews.postValue(Resource.Loading())
-        val response = newsRepository.getSportsNews(countryCode,sportsNewsPage)
-        sportsNews.postValue(sportsNewsResponse(response))
-    }
-
-    private suspend fun trendingNewsCall(countryCode: String) {
-        trendingNews.postValue(Resource.Loading())
-        val response = newsRepository.getTrendingNews(countryCode,trendingNewsPage)
-        trendingNews.postValue(trendingNewsResponse(response))
-    }
-
-    private suspend fun techNewsCall(countryCode: String) {
-        techNews.postValue(Resource.Loading())
-        val response = newsRepository.getTechNews(countryCode, techNewsPage)
-        techNews.postValue(techNewsResponse(response))
-
-    }
-
     private fun techNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse>? {
         if (response.isSuccessful){
             response.body()?.let { newsResponse ->
@@ -103,7 +84,7 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
 
     }
 
-    private fun sportsNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse>? {
+    private fun sportsNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
         if (response.isSuccessful){
             response.body()?.let { resultResponse ->
                 sportsNewsPage++
@@ -122,6 +103,26 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
         return Resource.Error(response.message(), null)
 
     }
+
+    private suspend fun sportsNewsCall(countryCode: String) {
+        sportsNews.postValue(Resource.Loading())
+        val response = newsRepository.getSportsNews(countryCode,sportsNewsPage)
+        sportsNews.postValue(sportsNewsResponse(response))
+    }
+
+    private suspend fun trendingNewsCall(countryCode: String) {
+        trendingNews.postValue(Resource.Loading())
+        val response = newsRepository.getTrendingNews(countryCode,trendingNewsPage)
+        trendingNews.postValue(trendingNewsResponse(response))
+    }
+
+    private suspend fun techNewsCall(countryCode: String) {
+        techNews.postValue(Resource.Loading())
+        val response = newsRepository.getTechNews(countryCode, techNewsPage)
+        techNews.postValue(techNewsResponse(response))
+
+    }
+
 
     fun saveArticle(articles: Articles) = viewModelScope.launch {
         newsRepository.saveArticle(articles)

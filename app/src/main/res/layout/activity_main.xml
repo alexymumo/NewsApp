@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/teal_700"
-        app:tabTextColor="@android:color/black">
+        app:tabTextColor="@android:color/black"
+        tools:ignore="MissingConstraints">
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager

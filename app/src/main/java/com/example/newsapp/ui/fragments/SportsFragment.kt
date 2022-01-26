@@ -15,7 +15,11 @@ class SportsFragment : Fragment(R.layout.fragment_sports) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initUI()
+        setUpRecyclerView()
+    }
 
+    private fun initUI() {
         newsViewModel.sportsNews.observe(viewLifecycleOwner, Observer { response ->
             when(response){
                 is Resource.Success -> {
@@ -31,7 +35,10 @@ class SportsFragment : Fragment(R.layout.fragment_sports) {
                     TODO("Do something")
                 }
             }
-
         })
+    }
+    private fun setUpRecyclerView() {
+        newsAdapter = NewsAdapter()
+        
     }
 }
