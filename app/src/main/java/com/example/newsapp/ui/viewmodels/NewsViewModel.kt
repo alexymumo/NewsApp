@@ -34,7 +34,7 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
         getAllNews()
     }
 
-    private fun getAllNews() {
+    fun getAllNews() {
         viewModelScope.launch {
             _news.postValue(Resource.Loading())
             val response = newsRepository.getAllNews()
