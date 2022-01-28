@@ -13,6 +13,7 @@ import com.example.newsapp.data.local.entities.Articles
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
+
     inner class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     private val differCallBack = object : DiffUtil.ItemCallback<Articles>(){
@@ -31,10 +32,12 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
             LayoutInflater.from(parent.context).inflate(
                 R.layout.article_cardview, parent, false)
         )
+
     }
     private var onItemClickListener: ((Articles) -> Unit)? = null
 
     override fun onBindViewHolder(holder: NewsAdapter.NewsViewHolder, position: Int) {
+
         var articles = differ.currentList[position]
         holder.itemView.apply {
             val circularProgressDrawable = CircularProgressDrawable(context)
@@ -44,7 +47,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
             Glide.with(context)
                 .load(articles.urlImage)
                 .placeholder(circularProgressDrawable)
-                //.into()
+
 
 
             setOnClickListener {
