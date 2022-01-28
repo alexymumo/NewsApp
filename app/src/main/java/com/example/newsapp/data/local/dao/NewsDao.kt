@@ -14,4 +14,8 @@ interface NewsDao {
 
     @Delete
     suspend fun deleteArticles(articles: Articles)
+
+    @Query("SELECT *FROM article_table")
+    fun getAllNews(): LiveData<List<Articles>>
+
 }

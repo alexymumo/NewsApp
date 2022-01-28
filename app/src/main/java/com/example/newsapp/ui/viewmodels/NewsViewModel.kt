@@ -9,12 +9,11 @@ import com.example.newsapp.data.local.entities.NewsResponse
 import com.example.newsapp.data.repository.NewsRepository
 import com.example.newsapp.utils.Resource
 import kotlinx.coroutines.launch
-import okhttp3.Response
 
 
 class NewsViewModel(application: Application, private val newsRepository: NewsRepository) : AndroidViewModel(application) {
 
-    var sportsNewsPage = 1
+   /* var sportsNewsPage = 1
     val sportsNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var sportsNewsResponse: NewsResponse? = null
 
@@ -26,15 +25,35 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
     val techNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var techNewsResponse: NewsResponse? = null
 
+*/
+    private val news: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    private val _news : MutableLiveData<Resource<NewsResponse>> = news
 
 
     init {
-        getTechNews("us")
-        getTrendingNews("us")
-        getSportsNews("us")
+        getAllNews()
     }
 
-    fun getSportsNews(countryCode: String) = viewModelScope.launch {
+    private fun getAllNews() {
+        viewModelScope.launch {
+            _news.postValue(Resource.Loading())
+            val response = newsRepository.getAllNews()
+            _news.postValue(handleNewsResponse(response))
+
+        }
+
+    }
+
+    private fun handleNewsResponse(response: retrofit2.Response<NewsResponse>): Resource<NewsResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { newsResponse ->
+                return@let Resource.Success(newsResponse)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+
+    /*fun getSportsNews(countryCode: String) = viewModelScope.launch {
         sportsNewsCall(countryCode)
     }
 
@@ -44,9 +63,9 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
 
     fun getTechNews(countryCode: String) = viewModelScope.launch {
         techNewsCall(countryCode)
-    }
+    }*/
 
-    private fun techNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse>? {
+    /*private fun techNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
         if (response.isSuccessful){
             response.body()?.let { newsResponse ->
                 techNewsPage++
@@ -122,6 +141,8 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
         techNews.postValue(techNewsResponse(response))
 
     }
+
+     */
 
 
     fun saveArticle(articles: Articles) = viewModelScope.launch {

@@ -16,30 +16,7 @@ class TrendingFragment : Fragment(R.layout.fragment_trending) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initUI()
-        setUpRecyclerView()
     }
 
-    private fun initUI() {
-        newsViewModel.trendingNews.observe(viewLifecycleOwner, Observer { response ->
-            when(response){
-                is Resource.Success -> {
-
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Error -> {
-
-                }
-            }
-        })
-    }
-
-    private fun setUpRecyclerView() {
-        newsAdapter = NewsAdapter()
-
-
-    }
 
 }

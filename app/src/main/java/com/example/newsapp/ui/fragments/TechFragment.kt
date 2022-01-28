@@ -16,18 +16,5 @@ class TechFragment : Fragment(R.layout.fragment_tech) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        newsViewModel.techNews.observe(viewLifecycleOwner, Observer { response ->
-            when(response){
-                is Resource.Success -> {
-
-                }
-                is Resource.Error -> {
-
-                }
-                is Resource.Loading -> {
-
-                }
-            }
-        })
     }
 }

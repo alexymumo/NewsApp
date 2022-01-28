@@ -44,6 +44,8 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
             Glide.with(context)
                 .load(articles.urlImage)
                 .placeholder(circularProgressDrawable)
+                //.into()
+
 
             setOnClickListener {
                 onItemClickListener?.let { it(articles) }
