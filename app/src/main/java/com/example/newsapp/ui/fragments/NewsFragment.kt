@@ -12,7 +12,7 @@ import java.util.*
 
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
-    lateinit var newsViewModel: NewsViewModel
+    private lateinit var newsViewModel: NewsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +25,10 @@ class NewsFragment : Fragment() {
     }
 
     private fun initUI() {
-        newsViewModel.getAllNews()
+        newsViewModel.getAllNews(viewLifecycleOwner) { news ->
+            //Glide.with(requireActivity()).load(news)
+            binding
+
+        }
     }
 }

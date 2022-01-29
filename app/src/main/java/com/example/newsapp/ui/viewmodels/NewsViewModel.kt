@@ -2,6 +2,7 @@ package com.example.newsapp.ui.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.newsapp.data.local.entities.Articles
@@ -26,15 +27,19 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
     var techNewsResponse: NewsResponse? = null
 
 */
+
     private val news: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     private val _news : MutableLiveData<Resource<NewsResponse>> = news
 
 
     init {
-        getAllNews()
+        getAllNews(viewLifecycleOwner) { news ->
+            Glide.with(requireActivity()).load()
+
+        }
     }
 
-    fun getAllNews() {
+    fun getAllNews(viewLifecycleOwner: LifecycleOwner, param: (Any) -> Unit) {
         viewModelScope.launch {
             _news.postValue(Resource.Loading())
             val response = newsRepository.getAllNews()
