@@ -30,7 +30,7 @@ class NewsFragment : Fragment() {
     }
 
     private fun initUI() {
-        viewModel.news.observe(viewLifecycleOwner, { news ->
+        viewModel.news.observe(viewLifecycleOwner, {
            // Glide.with(requireActivity()).load().into(binding.ivArticleImage)
 
             binding.tvDescription.text

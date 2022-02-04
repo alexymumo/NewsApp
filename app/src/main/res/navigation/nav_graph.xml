@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/sportsFragment">
+    app:startDestination="@id/newsFragment">
 
     <fragment
         android:id="@+id/trendingFragment"
@@ -30,4 +30,9 @@
         android:name="com.example.newsapp.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.newsapp.ui.fragments.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
 </navigation>
