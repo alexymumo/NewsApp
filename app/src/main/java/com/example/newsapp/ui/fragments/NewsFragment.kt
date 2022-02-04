@@ -5,16 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.Glide
+import androidx.fragment.app.viewModels
 import com.example.newsapp.databinding.FragmentNewsBinding
 import com.example.newsapp.ui.viewmodels.NewsViewModel
-import kotlinx.coroutines.launch
 
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
-    private val newsViewModel: NewsViewModel by activityViewModels()
+    private val viewModel: NewsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,11 +19,26 @@ class NewsFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentNewsBinding.inflate(inflater, container, false)
-        initUI()
+
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initUI()
+
+    }
+
     private fun initUI() {
-        newsViewModel.
+        viewModel.news.observe(viewLifecycleOwner, { news ->
+           // Glide.with(requireActivity()).load().into(binding.ivArticleImage)
+
+            binding.tvDescription.text
+            binding.tvTitle.text
+            binding.tvPublishedAt.text
+
+
+        })
+
     }
 }

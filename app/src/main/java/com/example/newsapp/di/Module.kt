@@ -60,7 +60,7 @@ val daoModule : Module = module {
 }
 
 val viewModelModule : Module = module {
-    viewModel { NewsViewModel(get(), get()) }
+    viewModel { NewsViewModel(get()) }
 }
 
 val appModules : List<Module> = listOf(

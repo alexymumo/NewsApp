@@ -26,15 +26,10 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
 
 */
 
-    private val news: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    val news: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     private val _news : MutableLiveData<Resource<NewsResponse>> = news
 
-
-    init {
-        getAllNews()
-        }
-
-    private fun getAllNews(){
+    fun getAllNews(){
         viewModelScope.launch {
             _news.postValue(Resource.Loading())
             val response = newsRepository.getAllNews()

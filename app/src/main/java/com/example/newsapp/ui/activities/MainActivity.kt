@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.adapter = viewPagerAdapter
 
         //val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        binding.tabLayout.setupWithViewPager(viewPager)
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
         binding.tabLayout.tabMode = TabLayout.MODE_SCROLLABLE
 
     }

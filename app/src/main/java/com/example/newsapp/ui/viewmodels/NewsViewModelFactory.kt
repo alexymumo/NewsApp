@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.newsapp.data.repository.NewsRepository
 import java.lang.IllegalArgumentException
 
-class NewsViewModelFactory(val application: Application,val newsRepository: NewsRepository) : ViewModelProvider.Factory {
+class NewsViewModelFactory(val newsRepository: NewsRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(NewsViewModel::class.java)){
             @Suppress("UNCHECKED CAST")
-            return NewsViewModel(application,newsRepository)  as T
+            return NewsViewModel(newsRepository)  as T
         }
         throw IllegalArgumentException("Unknown viewmodel class")
     }
