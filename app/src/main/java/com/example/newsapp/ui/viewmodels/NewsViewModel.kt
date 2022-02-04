@@ -2,15 +2,12 @@ package com.example.newsapp.ui.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.newsapp.data.local.entities.Articles
 import com.example.newsapp.data.local.entities.NewsResponse
 import com.example.newsapp.data.repository.NewsRepository
 import com.example.newsapp.utils.Resource
 import kotlinx.coroutines.launch
-
 
 class NewsViewModel(application: Application, private val newsRepository: NewsRepository) : AndroidViewModel(application) {
 
@@ -33,13 +30,18 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
 
 
     init {
-        getAllNews(viewLifecycleOwner) { news ->
-            Glide.with(requireActivity()).load()
-
+        getAllNews()
         }
-    }
 
-    fun getAllNews(viewLifecycleOwner: LifecycleOwner, param: (Any) -> Unit) {
+    private fun getAllNews() = viewModelScope.launch {
+        _news.postValue(Resource.Loading())
+        val response = newsRepository.getAllNews()
+        _news.postValue(handleNewsResponse(response))
+
+    }
+}
+
+    /*fun getAllNews(viewLifecycleOwner) {
         viewModelScope.launch {
             _news.postValue(Resource.Loading())
             val response = newsRepository.getAllNews()
@@ -47,7 +49,7 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
 
         }
 
-    }
+    }*/
 
     private fun handleNewsResponse(response: retrofit2.Response<NewsResponse>): Resource<NewsResponse> {
         if (response.isSuccessful) {
@@ -58,7 +60,7 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
         return Resource.Error(response.message())
     }
 
-    fun saveArticle(articles: Articles) = viewModelScope.launch {
+   /* fun saveArticle(articles: Articles) = viewModelScope.launch {
         newsRepository.saveArticle(articles)
     }
 
@@ -68,3 +70,5 @@ class NewsViewModel(application: Application, private val newsRepository: NewsRe
 
     fun fetchAllArticles(articles: Articles) = newsRepository.getAllArticles()
 }
+
+    */
