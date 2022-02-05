@@ -12,20 +12,6 @@ import kotlinx.coroutines.launch
 
 class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
 
-   /* var sportsNewsPage = 1
-    val sportsNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    var sportsNewsResponse: NewsResponse? = null
-
-    var trendingNewsPage = 1
-    val trendingNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    var trendingNewsResponse: NewsResponse? = null
-
-    var techNewsPage = 1
-    val techNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    var techNewsResponse: NewsResponse? = null
-
-*/
-
     val news: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     private val _news : MutableLiveData<Resource<NewsResponse>> = news
 
@@ -37,17 +23,6 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
         }
     }
     }
-
-
-    /*fun getAllNews(viewLifecycleOwner) {
-        viewModelScope.launch {
-            _news.postValue(Resource.Loading())
-            val response = newsRepository.getAllNews()
-            _news.postValue(handleNewsResponse(response))
-
-        }
-
-    }*/
 
     private fun handleNewsResponse(response: retrofit2.Response<NewsResponse>): Resource<NewsResponse> {
         if (response.isSuccessful) {

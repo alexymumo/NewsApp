@@ -31,6 +31,7 @@ class NewsFragment : Fragment() {
     }
 
     private fun initNewsRecyclerView() {
+        //newsAdapter = NewsAdapter(articles = MutableList<Articles>)
 
     }
 
@@ -39,8 +40,7 @@ class NewsFragment : Fragment() {
             when(result) {
                 is Resource.Success -> {
                     hideProgressBar()
-                    result.data.let { 
-
+                    result.data.let {
                     }
                 }
                 is Resource.Loading -> {
