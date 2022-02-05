@@ -31,7 +31,6 @@ class NewsFragment : Fragment() {
     }
 
     private fun initNewsRecyclerView() {
-        //newsAdapter = NewsAdapter()
 
     }
 
