@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.newsapp.data.local.entities.Articles
 import com.example.newsapp.databinding.ItemViewBinding
 
-class NewsAdapter constructor(private val articles: MutableList<Articles>) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+class NewsAdapter(private val articles: MutableList<Articles>) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -24,7 +24,6 @@ class NewsAdapter constructor(private val articles: MutableList<Articles>) : Rec
         holder.bind(holder.itemView.context, articles)
 
     }
-
 
     class NewsViewHolder(private val binding: ItemViewBinding): RecyclerView.ViewHolder(binding.root) {
 
