@@ -1,6 +1,7 @@
 package com.example.newsapp.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,12 @@ import com.example.newsapp.ui.adapters.NewsAdapter
 import com.example.newsapp.ui.viewmodels.NewsViewModel
 import com.example.newsapp.utils.Resource
 
+
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
     private val viewModel: NewsViewModel by viewModels()
     private lateinit var newsAdapter: NewsAdapter
+    private val TAG = "NEWS_FRAGMENT"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,8 +34,7 @@ class NewsFragment : Fragment() {
     }
 
     private fun initNewsRecyclerView() {
-        //newsAdapter = NewsAdapter(articles = MutableList<Articles>)
-
+        newsAdapter = NewsAdapter()
     }
 
     private fun initUI() {
@@ -41,6 +43,7 @@ class NewsFragment : Fragment() {
                 is Resource.Success -> {
                     hideProgressBar()
                     result.data.let {
+
                     }
                 }
                 is Resource.Loading -> {
@@ -49,6 +52,7 @@ class NewsFragment : Fragment() {
                 }
                 is Resource.Error -> {
                     showProgressBar()
+                    Log.e(TAG, "ERROR")
 
                 }
             }
@@ -58,8 +62,6 @@ class NewsFragment : Fragment() {
     }
 
     private fun showProgressBar() {
-
-        TODO("Not yet implemented")
     }
 
     private fun hideProgressBar() {

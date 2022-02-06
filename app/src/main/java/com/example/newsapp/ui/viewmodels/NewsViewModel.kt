@@ -1,7 +1,5 @@
 package com.example.newsapp.ui.viewmodels
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -33,15 +31,5 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
         return Resource.Error(response.message())
     }
 
-   /* fun saveArticle(articles: Articles) = viewModelScope.launch {
-        newsRepository.saveArticle(articles)
-    }
 
-    fun deleteArticle(articles: Articles) = viewModelScope.launch {
-        newsRepository.deleteArticle(articles)
-    }
 
-    fun fetchAllArticles(articles: Articles) = newsRepository.getAllArticles()
-}
-
-    */

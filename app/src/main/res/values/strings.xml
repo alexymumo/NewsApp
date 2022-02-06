@@ -3,4 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="news">News</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
+    <string name="_10_pm">10 pm</string>
+    <string name="hello">Hello</string>
+    <string name="todo">TODO</string>
 </resources>
