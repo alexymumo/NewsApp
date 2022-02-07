@@ -4,4 +4,6 @@
     <string name="todo">TODO</string>>
     <string name="_10_pm">10 pm</string>
     <string name="hello">Hello</string>
+    <string name="settings">Settings</string>
+    <string name="theme">Theme</string>
 </resources>

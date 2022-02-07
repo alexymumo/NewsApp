@@ -13,6 +13,8 @@
         <entry key="app/src/main/res/layout/fragment_tech.xml" value="0.17760416666666667" />
         <entry key="app/src/main/res/layout/fragment_trending.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/item_view.xml" value="0.19270833333333334" />
+        <entry key="app/src/main/res/layout/nav_header.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/menu/nav_drawer_menu.xml" value="0.19322916666666667" />
       </map>
     </option>
   </component>

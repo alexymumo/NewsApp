@@ -15,22 +15,22 @@ import com.example.newsapp.utils.Resource
 
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
-    private val viewModel: NewsViewModel by activityViewModels()
+   // private val viewModel: NewsViewModel by activityViewModels()
     //private val viewModel by viewModels<NewsViewModel>()
     private lateinit var newsAdapter: NewsAdapter
-    private val args: NewsFragmentArgs by navArgs()
+    //private val args: NewsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNewsBinding.inflate(inflater, container, false)
-        initUI()
-        initNewsRecyclerView()
+        //initUI()
+        //initNewsRecyclerView()
         return binding.root
     }
 
-    private fun initNewsRecyclerView() {
+   /* private fun initNewsRecyclerView() {
         newsAdapter = NewsAdapter()
         binding.recyclerView.apply {
             adapter = newsAdapter
@@ -57,7 +57,7 @@ class NewsFragment : Fragment() {
                 }
             }
         })
-    }
+
 
     private fun showProgressBar() {
         binding.progressBar.visibility = View.VISIBLE
@@ -66,5 +66,5 @@ class NewsFragment : Fragment() {
 
     private fun hideProgressBar() {
         binding.progressBar.visibility = View.GONE
-    }
+    }*/
 }
