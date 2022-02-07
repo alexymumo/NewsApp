@@ -23,7 +23,6 @@
         <argument
             android:name="ID"
             android:defaultValue="0"
-            app:argType="integer"
-            />
+            app:argType="integer" />
     </fragment>
 </navigation>
