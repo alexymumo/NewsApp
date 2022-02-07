@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/teal_700"
+    android:theme="@style/Theme.Design.NoActionBar"
     tools:context=".ui.fragments.SplashFragment">
-
 
     <TextView
         android:text="@string/news"
@@ -17,6 +17,5 @@
         android:textAllCaps="true"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content"/>
-
 
 </RelativeLayout>

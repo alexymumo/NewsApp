@@ -3,36 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/newsFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
-        android:id="@+id/trendingFragment"
-        android:name="com.example.newsapp.ui.fragments.TrendingFragment"
-        android:label="fragment_trending"
-        tools:layout="@layout/fragment_trending" />
-    <fragment
-        android:id="@+id/sportsFragment"
-        android:name="com.example.newsapp.ui.fragments.SportsFragment"
-        android:label="fragment_sports"
-        tools:layout="@layout/fragment_sports" />
-    <fragment
-        android:id="@+id/techFragment"
-        android:name="com.example.newsapp.ui.fragments.TechFragment"
-        android:label="fragment_tech"
-        tools:layout="@layout/fragment_tech" />
-    <fragment
-        android:id="@+id/articleFragment"
-        android:name="com.example.newsapp.ui.fragments.ArticleFragment"
-        android:label="fragment_article"
-        tools:layout="@layout/fragment_article" />
-    <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.newsapp.SplashFragment"
+        android:name="com.example.newsapp.ui.fragments.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.newsapp.ui.fragments.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news">
+
+        <argument
+            android:name="ID"
+            android:defaultValue="0"
+            app:argType="integer"
+            />
+    </fragment>
 </navigation>

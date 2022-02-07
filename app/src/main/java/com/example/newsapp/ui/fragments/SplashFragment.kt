@@ -21,8 +21,8 @@ class SplashFragment : Fragment() {
     ): View {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         Handler().postDelayed({
-            findNavController().navigate(R.id.articleFragment)
-        }, 2000)
+            findNavController().navigate(R.id.action_splashFragment_to_newsFragment)
+        }, 1000)
 
         return binding.root
     }

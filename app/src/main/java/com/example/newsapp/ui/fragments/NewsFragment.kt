@@ -1,41 +1,44 @@
 package com.example.newsapp.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.databinding.FragmentNewsBinding
 import com.example.newsapp.ui.adapters.NewsAdapter
 import com.example.newsapp.ui.viewmodels.NewsViewModel
 import com.example.newsapp.utils.Resource
 
-
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
-    private val viewModel: NewsViewModel by viewModels()
+    private val viewModel: NewsViewModel by activityViewModels()
+    //private val viewModel by viewModels<NewsViewModel>()
     private lateinit var newsAdapter: NewsAdapter
-    private val TAG = "NEWS_FRAGMENT"
+    private val args: NewsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNewsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         initUI()
         initNewsRecyclerView()
+        return binding.root
     }
 
     private fun initNewsRecyclerView() {
         newsAdapter = NewsAdapter()
+        binding.recyclerView.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        }
     }
+
 
     private fun initUI() {
         viewModel.news.observe(viewLifecycleOwner, { result->
@@ -43,7 +46,7 @@ class NewsFragment : Fragment() {
                 is Resource.Success -> {
                     hideProgressBar()
                     result.data.let {
-
+                        binding.progressBar.visibility = View.GONE
                     }
                 }
                 is Resource.Loading -> {
@@ -52,19 +55,17 @@ class NewsFragment : Fragment() {
                 }
                 is Resource.Error -> {
                     showProgressBar()
-                    Log.e(TAG, "ERROR")
-
                 }
             }
-
         })
-
     }
 
     private fun showProgressBar() {
+        binding.progressBar.visibility = View.VISIBLE
+
     }
 
     private fun hideProgressBar() {
-        TODO("Not yet implemented")
+        binding.progressBar.visibility = View.GONE
     }
 }

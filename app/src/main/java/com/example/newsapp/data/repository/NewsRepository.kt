@@ -1,7 +1,7 @@
 package com.example.newsapp.data.repository
 
 import com.example.newsapp.data.local.db.NewsDatabase
-import com.example.newsapp.data.local.entities.Articles
+import com.example.newsapp.data.local.entities.News
 import com.example.newsapp.data.network.NewsApi
 
 class NewsRepository(private val newsDatabase: NewsDatabase, private val newsApi: NewsApi) {
@@ -20,12 +20,12 @@ class NewsRepository(private val newsDatabase: NewsDatabase, private val newsApi
     */
     suspend fun getAllNews() = newsApi.getAllNews()
 
-    suspend fun saveArticle(articles: Articles) =
-        newsDatabase.newsDao().saveArticle(articles)
+    suspend fun saveArticle(news: News) =
+        newsDatabase.newsDao().saveArticle(news)
 
 
-    suspend fun deleteArticle(articles: Articles) =
-        newsDatabase.newsDao().deleteArticles(articles)
+    suspend fun deleteArticle(news: News) =
+        newsDatabase.newsDao().deleteArticles(news)
 
     fun getAllArticles() =
         newsDatabase.newsDao().fetchArticles()

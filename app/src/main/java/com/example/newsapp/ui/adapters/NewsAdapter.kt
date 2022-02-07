@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.newsapp.data.local.entities.Articles
+import com.example.newsapp.data.local.entities.News
 import com.example.newsapp.databinding.ItemViewBinding
 
 class NewsAdapter: RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     //private lateinit var articles: MutableList<Articles>
 
-    val differCallBack = object : DiffUtil.ItemCallback<Articles>() {
-        override fun areContentsTheSame(oldItem: Articles, newItem: Articles) =
+    val differCallBack = object : DiffUtil.ItemCallback<News>() {
+        override fun areContentsTheSame(oldItem: News, newItem: News) =
             oldItem ==  oldItem
 
-        override fun areItemsTheSame(oldItem: Articles, newItem: Articles) =
+        override fun areItemsTheSame(oldItem: News, newItem: News) =
             oldItem.id == newItem.id
     }
 
@@ -41,12 +41,9 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     class NewsViewHolder(private val binding: ItemViewBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(context: Context?, articles: Articles) {
-            Glide.with(context!!).load(articles.urlImage).into(binding.ivArticleImage)
-            binding.tvDescription.text = articles.description
-            binding.tvTitle.text = articles.title
-            binding.tvSource.text = articles.author
-
+        fun bind(context: Context?, news: News) {
+            Glide.with(context!!).load(news.urlImage).into(binding.ivArticleImage)
+            binding.tvDescription.text = news.description
         }
 
     }
