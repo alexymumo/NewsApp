@@ -3,24 +3,27 @@ This app consumes the news.org Api to fetch and display news, The app uses the M
 
 </br>
 Minimum API level supported: 21
-</br> 
-Build System: [Gradle](https://gradle.org/)
+ 
+Build System:
+* [Gradle](https://gradle.org/)
 
-### Prequisite
+## Prerequisite
 To run the project have the following tools
 * Android Studio 4.0 or above
 
-### Architecture
+## Architecture
 The app is build with MVVM architecture to allow separation of concerns to allow data not to be destroyed over configuration changes
-<img src="assets/mvvm_architecture.png" width="280">
+<img src="assets/mvvm_architecture.png">
 
-### Libraries
+## Libraries
+Libraries used in the whole application are:
+
 * [Jetpack](https://developer.android.com/jetpack)
 * [Navigation Components](https://developer.android.com/guide/navigation/navigation-getting-started) - provides simple navigation across the app 
-* [Koin] - Light weight dependency injection library
-* [Gson] - Convert JSON to Java/Kotlin objects
-* [Room] - Persistence library build ontop of Sqlite
-* [Retrofit] - A Type-safe HTTP client for android and java to consumes REST apis
+* [Koin](https://insert-koin.io/) - Light weight dependency injection library
+* [Gson](https://gson.com) - Convert JSON to Java/Kotlin objects
+* [Room](https://developer.android.com/codelabs/android-room-with-a-view) - Persistence library build ontop of Sqlite
+* [Retrofit](https://square.github.io/retrofit/) - A Type-safe HTTP client for android and java to consumes REST apis
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Manage UI related data in a lifecycle concious way
 * [View Binding](https://developer.android.com/topic/libraries/data-binding) - Jetpack library for binding with views
 * [OkHttp-logging-Interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor) - Logs OkHttp network traffic
