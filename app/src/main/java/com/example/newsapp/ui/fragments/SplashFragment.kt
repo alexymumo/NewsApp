@@ -22,7 +22,7 @@ class SplashFragment : Fragment() {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         Handler().postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_newsFragment)
-        }, 1000)
+        }, 2000)
 
         return binding.root
     }

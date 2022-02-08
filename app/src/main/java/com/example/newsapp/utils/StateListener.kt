@@ -6,5 +6,5 @@ interface StateListener {
 
     fun onSuccess(message:String)
 
-    fun OnFailure(message: String)
+    fun onFailure(message: String)
 }

@@ -52,15 +52,15 @@ fun provideOkHttp(): OkHttpClient {
 }
 
 val repositoryModule : Module = module {
-    single { NewsRepository(get(), get()) }
+    single { NewsRepository(get()) }
 }
 
-val daoModule : Module = module {
+private val daoModule : Module = module {
     single { get<NewsDatabase>().newsDao() }
 }
 
-val viewModelModule : Module = module {
-    viewModel { NewsViewModel(get(), get()) }
+private val viewModelModule : Module = module {
+    viewModel { NewsViewModel(get()) }
 }
 
 val appModules : List<Module> = listOf(
