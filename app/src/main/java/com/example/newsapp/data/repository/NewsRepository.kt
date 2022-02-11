@@ -5,6 +5,6 @@ import com.example.newsapp.data.network.NewsApi
 
 class NewsRepository(private val newsApi: NewsApi) {
 
-    suspend fun getAllNews()  = newsApi.getAllNews()
+    suspend fun getAllNews()   = newsApi.getAllNews()
 
 }

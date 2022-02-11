@@ -6,18 +6,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.R
 import com.example.newsapp.databinding.FragmentNewsBinding
 import com.example.newsapp.ui.adapters.NewsAdapter
 import com.example.newsapp.ui.viewmodels.NewsViewModel
 import com.example.newsapp.utils.StateListener
+import kotlinx.coroutines.launch
 
 
 class NewsFragment : Fragment(R.layout.fragment_news), StateListener {
-    private var _binding: FragmentNewsBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentNewsBinding
     private val viewModel: NewsViewModel by viewModels()
 
     private lateinit var newsAdapter: NewsAdapter
@@ -26,10 +26,11 @@ class NewsFragment : Fragment(R.layout.fragment_news), StateListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNewsBinding.inflate(inflater, container, false)
+        binding = FragmentNewsBinding.inflate(inflater, container, false)
         val view = binding.root
         initUI()
         initNewsRecyclerView()
+
         return view
         //return binding.root
     }
@@ -43,10 +44,10 @@ class NewsFragment : Fragment(R.layout.fragment_news), StateListener {
     }
 
     private fun initUI() {
-        viewModel.getAllNews.observe(this, Observer { news ->
-            newsAdapter.differ
-
+        viewModel.news.observe(this, Observer {
+            viewModel.getAllNews.value
         })
+
     }
 
     override fun onLoading() {
@@ -58,13 +59,7 @@ class NewsFragment : Fragment(R.layout.fragment_news), StateListener {
     }
 
     override fun onFailure(message: String) {
-        binding.progressBar.visibility = View.GONE
-        Toast.makeText(requireActivity(), "Network Error", Toast.LENGTH_SHORT).show()
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        binding.progressBar.visibility = View.VISIBLE
+        Toast.makeText(requireContext(), "Network error", Toast.LENGTH_SHORT).show()
     }
 }
