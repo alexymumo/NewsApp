@@ -1,9 +1,6 @@
 package com.example.newsapp.ui.fragments
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
@@ -12,17 +9,25 @@ import com.example.newsapp.R
 import com.example.newsapp.databinding.FragmentNewsBinding
 import com.example.newsapp.ui.adapters.NewsAdapter
 import com.example.newsapp.ui.viewmodels.NewsViewModel
-import com.example.newsapp.utils.StateListener
-import kotlinx.coroutines.launch
+import com.example.newsapp.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
-
-class NewsFragment : Fragment(R.layout.fragment_news), StateListener {
+@AndroidEntryPoint
+class NewsFragment : Fragment(R.layout.fragment_news) {
     private lateinit var binding: FragmentNewsBinding
-    private val viewModel: NewsViewModel by viewModels()
-
+    private val viewModel by viewModels<NewsViewModel>()
     private lateinit var newsAdapter: NewsAdapter
 
-    override fun onCreateView(
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentNewsBinding.bind(view)
+        initNewsRecyclerView()
+        initUI()
+
+
+    }
+   /* override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
@@ -33,7 +38,7 @@ class NewsFragment : Fragment(R.layout.fragment_news), StateListener {
 
         return view
         //return binding.root
-    }
+    }*/
 
     private fun initNewsRecyclerView() {
         newsAdapter = NewsAdapter()
@@ -44,22 +49,22 @@ class NewsFragment : Fragment(R.layout.fragment_news), StateListener {
     }
 
     private fun initUI() {
-        viewModel.news.observe(this, Observer {
-            viewModel.getAllNews.value
+        viewModel.newsResponse.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is Resource.Success -> {
+                    viewModel.fetchNews(key = "2323r2523")
+
+                }
+                is Resource.Loading -> {
+                    Timber.d("Loading")
+                }
+                is Resource.Error -> {
+                    Timber.d("Network error")
+
+                }
+            }
         })
 
-    }
 
-    override fun onLoading() {
-        binding.progressBar.visibility = View.VISIBLE
-    }
-
-    override fun onSuccess(message: String) {
-        binding.progressBar.visibility = View.GONE
-    }
-
-    override fun onFailure(message: String) {
-        binding.progressBar.visibility = View.VISIBLE
-        Toast.makeText(requireContext(), "Network error", Toast.LENGTH_SHORT).show()
     }
 }
