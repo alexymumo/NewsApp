@@ -1,13 +1,10 @@
 package com.example.newsapp.data.network
 
 import com.example.newsapp.data.local.entities.NewsResponse
-import com.example.newsapp.utils.Resource
+import com.example.newsapp.utils.Constants.Companion.API_KEY
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface NewsApi {
-    @GET("v2/top_headlines")
-    suspend fun getAllNews(
-        @Query("api") api_key: String
-    ) : Resource<NewsResponse>
+    @GET("?key=$API_KEY")
+    suspend fun getAllNews(): NewsResponse
 }

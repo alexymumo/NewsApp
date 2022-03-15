@@ -10,17 +10,22 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-class NewsViewModel @Inject constructor(private val newsRepository: NewsRepository): ViewModel() {
+class NewsViewModel @Inject constructor(
+    private val newsRepository: NewsRepository,
+    private
 
-    private val _newResponse: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    val newsResponse: LiveData<Resource<NewsResponse>>
-    get() = _newResponse
+): ViewModel() {
+
+    //private val _newResponse: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    //val newsResponse: LiveData<Resource<NewsResponse>>
+    //get() = _newResponse
 
     private val _news = MutableLiveData<MutableList<News>>()
     val news: LiveData<MutableList<News>> = _news
 
-    fun fetchNews(key: String) = viewModelScope.launch {
-        _newResponse.value = newsRepository.getAllNews(key)
+    fun fetchNews() = viewModelScope.launch {
+
+        _newResponse.value = newsRepository.getAllNews()
     }
 }
 
