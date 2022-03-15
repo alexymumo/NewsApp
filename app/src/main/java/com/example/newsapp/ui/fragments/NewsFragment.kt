@@ -40,14 +40,6 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         //return binding.root
     }*/
 
-    private fun initNewsRecyclerView() {
-        newsAdapter = NewsAdapter()
-        binding.recyclerView.apply {
-            adapter = newsAdapter
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        }
-    }
-
     private fun initUI() {
         viewModel.newsResponse.observe(viewLifecycleOwner, Observer {
             when(it){
@@ -64,7 +56,13 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
                 }
             }
         })
+    }
 
-
+    private fun initNewsRecyclerView() {
+       newsAdapter = NewsAdapter()
+        binding.recyclerView.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        }
     }
 }

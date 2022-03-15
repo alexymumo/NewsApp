@@ -19,29 +19,9 @@ class NewsViewModel @Inject constructor(private val newsRepository: NewsReposito
     private val _news = MutableLiveData<MutableList<News>>()
     val news: LiveData<MutableList<News>> = _news
 
-    //val news: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    //private val _news: MutableLiveData<Resource<NewsResponse>> = news
-
     fun fetchNews(key: String) = viewModelScope.launch {
         _newResponse.value = newsRepository.getAllNews(key)
-
     }
-
-   /*val getAllNews = liveData {
-
-        stateListener?.onLoading()
-        try {
-            val news = newsRepository.getAllNews()
-            news.let { news ->
-                stateListener?.onSuccess("News fetched")
-                emit(news)
-            }
-
-        }catch (e: Exception){
-            stateListener?.onFailure(e.message.toString())
-        }
-    }*/
-
 }
 
 
