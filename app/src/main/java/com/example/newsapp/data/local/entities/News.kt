@@ -10,7 +10,6 @@ data class News(
     val author: String,
     val content: String,
     val description: String,
-    val publishedAt: Sources,
     val title: String,
     val urlImage: String
 )
