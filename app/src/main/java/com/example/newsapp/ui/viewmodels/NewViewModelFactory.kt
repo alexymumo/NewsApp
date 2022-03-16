@@ -10,7 +10,7 @@ class NewViewModelFactory(private val newsRepository: NewsRepository): ViewModel
         if (modelClass.isAssignableFrom(NewsViewModel::class.java)){
             return NewsViewModel(newsRepository) as T
         }else{
-            throw IllegalArgumentException("Unknown viewmodel class")
+            throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
 }

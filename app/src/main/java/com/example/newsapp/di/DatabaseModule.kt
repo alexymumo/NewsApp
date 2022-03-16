@@ -17,7 +17,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-
     @Provides
     @Singleton
     fun provideAppDatabase(@ApplicationContext context: Context): NewsDatabase =
@@ -30,10 +29,12 @@ object DatabaseModule {
     fun provideDao(newsDatabase: NewsDatabase): NewsDao =
         newsDatabase.newsDao()
 
-
+    /*
     @Provides
     @Singleton
-    fun provideRepository(newsApi: NewsApi): NewsRepository{
+    fun provideRepository(newsApi: NewsApi): NewsRepository {
         return NewsRepository(newsApi)
     }
+
+     */
 }

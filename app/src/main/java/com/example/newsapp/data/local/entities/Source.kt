@@ -1,6 +1,6 @@
 package com.example.newsapp.data.local.entities
 
-data class Sources(
-    val id: Any,
+data class Source(
+    val id: String,
     val name: String
 )
